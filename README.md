@@ -1,7 +1,7 @@
 ![made-with-VSCode](https://img.shields.io/badge/Made%20With-VS%20Code-green)  ![Using-CPlusPlus](https://img.shields.io/badge/Using-C%2B%2B-ff69b4)
 
-# TITLE
-...
+# Playing with Numbers
+a CLI app made with C++ that allows you to: enter numbers, print the numbers entered, find the mean of the numbers, and find the smallest or largest number.
 
 <img src="./assets/screenshot.png"
      alt="Img"
