@@ -8,9 +8,9 @@
      style="margin-right: 10px; height: 400px;" />
 
 ### Requirements for VS Code
-    * C/C++
-    * C/C++ Compile Run
-    * mingw
+* C/C++
+* C/C++ Compile Run
+* mingw
 
 
 ### Instructions
