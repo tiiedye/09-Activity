@@ -4,14 +4,19 @@
 
 using namespace std;
 
+char action {};
+vector <int> numbers;
+int addNum {};
+int addingVec {0};
+int mean {};
+
+// prototypes for menu functions
+void print_numbers(const vector<int> &nums);
+void print_display(const vector<int> &nums);
+void add_numbers(const vector<int> &nums);
+    
+// main program
 int main() {
-
-    char action {};
-    vector <int> nums;
-    int addNum {};
-    int addingVec {0};
-    int mean {};
-
     do {
         cout << "~~~~~~~~~~~~~~~~~~~~~~~" << endl;
         cout << endl;
@@ -28,41 +33,33 @@ int main() {
         switch (action) {
             case 'p':
             case 'P':
-                if (nums.size() == 0) {
-                    cout << "[] - the list is empty" << endl;
-                } else {
-                    cout << "[ ";
-                    for (auto i: nums) {
-                        cout << i << " ";
-                    }
-                    cout << "]" << endl;
-                }
+                print_numbers(numbers);
                 break;
             case 'a':
             case 'A':
                 cout << "Type and integer to add to the list: ";
                 cin >> addNum;
-                nums.push_back(addNum);
+                numbers.push_back(addNum);
                 cout << "You added " << addNum << endl;
                 break;
             case 'm':
             case 'M':
-                if (nums.size() == 0) {
+                if (numbers.size() == 0) {
                     cout << "Unable to calculate mean - no data" << endl;
                 } else {
-                    for (auto i: nums) {
+                    for (auto i: numbers) {
                         mean += i;
                     }
-                    cout << "The mean of all numbers is: " << static_cast<double>(mean)/nums.size() << endl;
+                    cout << "The mean of all numbers is: " << static_cast<double>(mean)/numbers.size() << endl;
                 }
                 break;
             case 's':
             case 'S':
-                cout << "The smallest number is: " << *min_element(nums.begin(), nums.end()) << endl;
+                cout << "The smallest number is: " << *min_element(numbers.begin(), numbers.end()) << endl;
                 break;
             case 'l':
             case 'L':
-                cout << "The smallest number is: " << *max_element(nums.begin(), nums.end()) << endl;
+                cout << "The smallest number is: " << *max_element(numbers.begin(), numbers.end()) << endl;
                 break;
             case 'q':
             case 'Q':
@@ -77,4 +74,28 @@ int main() {
 
 
     return 0;
+}
+
+// runs when 'P' is selected
+void print_numbers(const vector<int> &nums) {
+    if (nums.size() == 0) {
+        cout << "[] - the list is empty" << endl;
+    } else {
+        // calls print_display
+        print_display(nums);
+    }
+}
+
+// prints out numbers for the 'P' option, called in print_numbers.
+void print_display(const vector<int> &nums) {
+    cout << "[ ";
+        for (auto i : nums) {
+            cout << i << " ";
+        }
+    cout << "]" << endl;
+}
+
+// runs when 'A' is selected.
+void add_numbers(const vector<int> &nums) {
+
 }

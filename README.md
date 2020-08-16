@@ -23,7 +23,7 @@ challenge by refactoring your solution so that it uses uses functions.
 You decide how to modularize the program.
 you can use my solution which is included in this file, or modularize your solution.
     
- Here are a few hints:
+Here are a few hints:
     - Create functions for each major function
     - Keep the functions small
     - Remember the Boss/Worker analogy
