@@ -4,12 +4,13 @@
 
 using namespace std;
 
-char action {};
 vector <int> numbers;
 int addingVec {0};
 int mean {};
 
 // prototypes for menu functions
+void display_menu();
+char get_action();
 void print_numbers(const vector<int> &nums);
 void print_display(const vector<int> &nums);
 void add_numbers(vector<int> &nums);
@@ -17,56 +18,66 @@ void display_mean(const vector<int> &nums);
 void calc_mean(const vector<int> &nums);
 void display_smallest(const vector<int> &nums);
 void display_largest(const vector<int> &nums);
+void quit();
+void unknown();
     
 // main program
 int main() {
+    char action {};
+
     do {
-        cout << "~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-        cout << endl;
-        cout << "P - Print Numbers" << endl;
-        cout << "A - Add a Number" << endl;
-        cout << "M - Display mean of the Numbers" << endl;
-        cout << "S - Display the smallest Number" << endl;
-        cout << "L - Display the largest Number" << endl;
-        cout << "Q - Quit" << endl;
-        cout << endl;
-        cout << "What would you like to do? ";
-        cin >> action;
+        display_menu();
+        action = get_action();
 
         switch (action) {
-            case 'p':
             case 'P':
                 print_numbers(numbers);
                 break;
-            case 'a':
             case 'A':
                 add_numbers(numbers);
                 break;
-            case 'm':
             case 'M':
                 display_mean(numbers);
                 break;
-            case 's':
             case 'S':
                 display_smallest(numbers);
                 break;
-            case 'l':
             case 'L':
-                cout << "The smallest number is: " << *max_element(numbers.begin(), numbers.end()) << endl;
+                display_largest(numbers);
                 break;
-            case 'q':
             case 'Q':
-                cout << "Goodbye" << endl;
+                quit();
                 break;
             default:
-                cout << "Unknown selection, please try again." << endl;
+                unknown();
                 break;
         }
 
-    } while (action != 'q' && action != 'Q');
+    } while (action != 'Q');
 
 
     return 0;
+}
+
+// displays the starting menu.
+void display_menu() {
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << endl;
+    cout << "P - Print Numbers" << endl;
+    cout << "A - Add a Number" << endl;
+    cout << "M - Display mean of the Numbers" << endl;
+    cout << "S - Display the smallest Number" << endl;
+    cout << "L - Display the largest Number" << endl;
+    cout << "Q - Quit" << endl;
+    cout << endl;
+    cout << "What would you like to do? ";
+}
+
+// gets the action by the user.
+char get_action() {
+    char action {};
+    cin >> action;
+    return toupper(action);
 }
 
 // runs when 'P' is selected
@@ -114,6 +125,30 @@ void calc_mean(const vector<int> &nums) {
     cout << "The mean of all numbers is: " << static_cast<double>(mean)/nums.size() << endl;    
 }
 
+// displays the smallest number in the vector when 'S' is selected.
 void display_smallest(const vector<int> &nums) {
-    cout << "The smallest number is: " << *min_element(nums.begin(), nums.end()) << endl;
+    if (nums.size() == 0) {
+        cout << "There are no numbers in the vector, please add numbers first using the 'Add Numbers' feature" << endl;
+    } else {
+        cout << "The smallest number is: " << *min_element(nums.begin(), nums.end()) << endl;
+    }
+}
+
+// displays the largest number in the vector when 'L' is selected.
+void display_largest(const vector<int> &nums) {
+    if (nums.size() == 0) {
+        cout << "There are no numbers in the vector, please add numbers first using the 'Add Numbers' feature" << endl;
+    } else {
+    cout << "The largest number is: " << *max_element(nums.begin(), nums.end()) << endl;
+    }
+}
+
+// displays a message and quits the program
+void quit() {
+    cout << "Goodbye" << endl;
+}
+
+// displays when an unkown action is taken.
+void unknown() {
+    cout << "Unknown selection, please try again." << endl;
 }
