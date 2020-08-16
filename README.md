@@ -1,11 +1,9 @@
 ![made-with-VSCode](https://img.shields.io/badge/Made%20With-VS%20Code-green)  ![Using-CPlusPlus](https://img.shields.io/badge/Using-C%2B%2B-ff69b4)
 
 # Playing with Numbers
-a CLI app made with C++ that allows you to: enter numbers, print the numbers entered, find the mean of the numbers, and find the smallest or largest number.
+a CLI app made with C++ that allows you to: enter numbers, print the numbers entered, find the mean of the numbers, and find the smallest or largest number. Uses a Do While loop and a switch case, along with function calls.
 
-Refactored to use functions.
-
-<img src="./assets/screenshot.png"
+<img src="./assets/screenshot2.png"
      alt="Img"
      style="margin-right: 10px; height: 400px;" />
 
