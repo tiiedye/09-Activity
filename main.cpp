@@ -6,14 +6,17 @@ using namespace std;
 
 char action {};
 vector <int> numbers;
-int addNum {};
 int addingVec {0};
 int mean {};
 
 // prototypes for menu functions
 void print_numbers(const vector<int> &nums);
 void print_display(const vector<int> &nums);
-void add_numbers(const vector<int> &nums);
+void add_numbers(vector<int> &nums);
+void display_mean(const vector<int> &nums);
+void calc_mean(const vector<int> &nums);
+void display_smallest(const vector<int> &nums);
+void display_largest(const vector<int> &nums);
     
 // main program
 int main() {
@@ -37,25 +40,15 @@ int main() {
                 break;
             case 'a':
             case 'A':
-                cout << "Type and integer to add to the list: ";
-                cin >> addNum;
-                numbers.push_back(addNum);
-                cout << "You added " << addNum << endl;
+                add_numbers(numbers);
                 break;
             case 'm':
             case 'M':
-                if (numbers.size() == 0) {
-                    cout << "Unable to calculate mean - no data" << endl;
-                } else {
-                    for (auto i: numbers) {
-                        mean += i;
-                    }
-                    cout << "The mean of all numbers is: " << static_cast<double>(mean)/numbers.size() << endl;
-                }
+                display_mean(numbers);
                 break;
             case 's':
             case 'S':
-                cout << "The smallest number is: " << *min_element(numbers.begin(), numbers.end()) << endl;
+                display_smallest(numbers);
                 break;
             case 'l':
             case 'L':
@@ -96,6 +89,31 @@ void print_display(const vector<int> &nums) {
 }
 
 // runs when 'A' is selected.
-void add_numbers(const vector<int> &nums) {
+void add_numbers(vector<int> &nums) {
+    int addNum {};
+    cout << "Type and integer to add to the list: ";
+    cin >> addNum;
+    nums.push_back(addNum);
+    cout << "You added " << addNum << endl;
+}
 
+//  runs when 'M' is selected, and displays the numbers in vector numbers.
+void display_mean(const vector<int> &nums) {
+    if (nums.size() == 0) {
+        cout << "Unable to calculate mean - no data" << endl;
+    } else {
+        calc_mean(nums);
+    }
+}
+
+// calculates and displays the mean of all numbers in the vector numbers.
+void calc_mean(const vector<int> &nums) {
+    for (auto i: nums) {
+        mean += i;
+    }
+    cout << "The mean of all numbers is: " << static_cast<double>(mean)/nums.size() << endl;    
+}
+
+void display_smallest(const vector<int> &nums) {
+    cout << "The smallest number is: " << *min_element(nums.begin(), nums.end()) << endl;
 }
